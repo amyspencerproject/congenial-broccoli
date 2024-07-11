@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Precog Source UI</title>
+    <link rel="stylesheet" type="text.css" href="./scss/_normalize.css" />
+    <link rel="stylesheet" href="./scss/main.css" />
+    <link rel="stylesheet" href="./scss/fonts.css" />
+    <link rel="stylesheet" href="./scss/fontawesome-all.css" />
+    <link rel="stylesheet" href="./scss/google.css" />
+  </head>
+  <body>
+    <div class="Page">
+      <div class="PipelineCreatePage">
+        <div class="Container"><h1>Connect to Sql Server 2019</h1></div>
+        <div class="Container">
+          <div class="SourceAdd">
+            <div class="Group">
+              <button class="Button" type="button">
+                <i class="Icon fas fa-arrow-left"></i>Back
+              </button>
+            </div>
+            <div class="ConnectorForm">
+              <div class="Instructions">
+                <p>
+                  If you plan on using the SSH tunneling options, first
+                  establish a connection to your SQL Server without any of the
+                  optional SSH tunneling credentials. After establishing a
+                  connection you can set up SSH tunneling.
+                </p>
+                <p>
+                  Create a new database called <strong>precog</strong> where the data can be
+                  written. The user associated with this database needs to have
+                  write permissions and be able to create schemas, drop and
+                  truncate tables, and append and insert records. Make sure your
+                  firewall accepts a connection from <strong>44.205.118.35/32</strong>. The “/32”
+                  restricts that there is no range of acceptable IPs but only an
+                  exact match.
+                </p>
+              </div>
+              <h2>Precog configuration</h2>
+
+              <div class="KindForm">
+                <label class="Field"
+                  ><div class="Field-label">Server Name</div>
+                  <div class="Field-description">
+                    <p>
+                      Domain of the SQL Server to connect to Precog. This can be
+                      an IP address or a DNS name e.g.
+                      <code>mycompany.azuredbserver32.database.windows.net</code
+                      >. When the connection is being established without SSH
+                      tunneling, the domain needs to be publicly accessible. In
+                      the case of an on-premises instance of the SQL Server
+                      paired with SSH tunneling, the domain will be a private IP
+                      address.
+                    </p>
+                  </div>
+                  <input class="Input" type="text" placeholder="" /></label
+                ><label class="Field"
+                  ><div class="Field-label">Server Port</div>
+                  <div class="Field-description">
+                    <p>
+                      Port on which to connect. Most commonly, this is the SQL
+                      Server default port of 1433. If your SQL Server is accepting
+                      connections on a different port, that port number needs to
+                      be reflected here.
+                    </p>
+                  </div>
+                  <input class="Input" type="text" placeholder="1433"
+                /></label>
+                <label class="Field"
+                  ><div class="Field-label">Database Name</div>
+                  <div class="Field-description">
+                    <p>
+                      Database where the data will be written. The username
+                      provided below must have write permissions in this
+                      database.
+                    </p>
+                  </div>
+                  <input
+                    class="Input"
+                    type="text"
+                    placeholder="precog" /></label
+                ><label class="Field"
+                  ><div class="Field-label">Username</div>
+                  <div class="Field-description">
+                    <p>SQL Server username with write permissions.</p>
+                  </div>
+                  <input class="Input" type="text" placeholder="" /></label
+                ><label class="Field"
+                  ><div class="Field-label">Password</div>
+                  <div class="Field-description">
+                    <p>SQL Server password.</p>
+                  </div>
+                  <input class="Input" type="password" placeholder=""
+                /></label>
+                <label class="Field"
+                  ><div class="Field-label">
+                    SSH Server Name<span class="Field-labelOptional"></span>
+                      (optional)</span
+                    >
+                  </div>
+                  <div class="Field-description">
+                    <p>
+                      The SSH Server or Jump Server domain is the instance
+                      hosting an SSH connection with Precog. This can be an IP
+                      address or DNS name. This domain needs to be publicly
+                      accessible. This server, hosted on your company’s network,
+                      will support one end of an SSH connection that serves as
+                      an encrypted tunnel through which data will load.
+                    </p>
+                  </div>
+                  <input class="Input" type="text" placeholder=""
+                /></label>
+                <label class="Field"
+                  ><div class="Field-label">
+                    SSH Username
+                    <span class="Field-labelOptional"> (optional)</span>
+                  </div>
+                  <div class="Field-description">
+                    <p>Username to connect to a remote server via SSH.</p>
+                  </div>
+                  <input class="Input" type="text" placeholder=""
+                /></label>
+                <label class="Field"
+                  ><div class="Field-label">
+                    Private Key File<span class="Field-labelOptional">
+                      (optional)</span
+                    >
+                  </div>
+                  <div class="Field-description">
+                    <p>Private key to connect via SSH.</p>
+                  </div>
+                  <label class="Upload"
+                    ><input type="file" class="Upload-file" />
+                    <div class="Button Upload-fileName">
+                      <span class="Upload-fileNameIcon"
+                        ><i class="Icon fas fa-upload"></i></span
+                      >Select file
+                    </div></label
+                  ></label
+                ><label class="Field"
+                  ><div class="Field-label">
+                    Verify Server Certificate<span class="Field-labelOptional">
+                      (optional)</span
+                    >
+                  </div>
+                  <div class="Field-description">
+                    <p>
+                      Whether the server's SSL certificate is to be verified.
+                      Valid values are 'yes' and 'no'. For connecting initially, it is recommended to leave this as 'no'.
+                    </p>
+                  </div>
+                  <div class="Select">
+                    <select class="Select-select">
+                      <option>no</option>
+                      <option>yes</option></select
+                    ><span class="Select-icon"
+                      ><i class="Icon fas fa-chevron-down"></i
+                    ></span></div
+                ></label>
+              </div>
+              <div class="Group">
+                <div class="ButtonGroup">
+                  <button class="Button" type="button">
+                    <i class="Icon fas fa-plus"></i>Create destination
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
