@@ -35,8 +35,7 @@
                   write permissions and be able to create schemas, drop and
                   truncate tables, and append and insert records. Make sure your
                   firewall accepts a connection from <strong>44.205.118.35/32</strong>. The “/32”
-                  restricts that there is no range of acceptable IPs but only an
-                  exact match.
+                  restricts the accepted IP to only an exact match.
                 </p>
               </div>
               <h2>Precog configuration</h2>
@@ -46,7 +45,7 @@
                   ><div class="Field-label">Server Name</div>
                   <div class="Field-description">
                     <p>
-                      Domain of the SQL Server to connect to Precog. This can be
+                      The domain of the SQL Server connecting to Precog. This can be
                       an IP address or a DNS name e.g.
                       <code>mycompany.azuredbserver32.database.windows.net</code
                       >. When the connection is being established without SSH
@@ -73,7 +72,7 @@
                   ><div class="Field-label">Database Name</div>
                   <div class="Field-description">
                     <p>
-                      Database where the data will be written. The username
+                      Database where the data will be written e.g. precog. The username
                       provided below must have write permissions in this
                       database.
                     </p>
@@ -102,14 +101,10 @@
                     >
                   </div>
                   <div class="Field-description">
-                    <p>
-                      The SSH Server or Jump Server domain is the instance
-                      hosting an SSH connection with Precog. This can be an IP
-                      address or DNS name. This domain needs to be publicly
-                      accessible. This server, hosted on your company’s network,
-                      will support one end of an SSH connection that serves as
-                      an encrypted tunnel through which data will load.
-                    </p>
+                    <p>The SSH Server or Jump Server domain is the instance hosting an SSH connection with 
+                      Precog. This can be an IP address or DNS name. The domain needs to be publicly 
+                      accessible. The server, hosted on your company’s network, will support one end of an 
+                      SSH connection that serves as an encrypted tunnel through which data will load.</p>
                   </div>
                   <input class="Input" type="text" placeholder=""
                 /></label>
@@ -130,7 +125,8 @@
                     >
                   </div>
                   <div class="Field-description">
-                    <p>Private key to connect via SSH.</p>
+                    <p>Private key to connect via SSH tunneling. Authentication to the SSH 
+                      Server is accomplished with public-private keys.</p>
                   </div>
                   <label class="Upload"
                     ><input type="file" class="Upload-file" />
@@ -148,8 +144,7 @@
                   </div>
                   <div class="Field-description">
                     <p>
-                      Whether the server's SSL certificate is to be verified.
-                      Valid values are 'yes' and 'no'. For connecting initially, it is recommended to leave this as 'no'.
+                      For connecting initially, it is recommended to leave this as 'no'.
                     </p>
                   </div>
                   <div class="Select">
